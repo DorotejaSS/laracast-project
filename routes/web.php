@@ -17,5 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/posts/{post}', 'PostsController@show');
-Route::get('/assignment', 'AssignmentController@complete');
+Route::get('/about', function () {
+    return view('about', [
+        'articles' => App\Article::latest()->get()
+    ]);
+});
+
+Route::get('/articles/{article}', 'ArticlesController@show');
